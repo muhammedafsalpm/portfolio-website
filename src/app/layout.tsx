@@ -19,7 +19,10 @@ export const metadata: Metadata = {
   keywords: [
     "Muhammed Afsal P M",
     "AI Engineer",
-    "Data Scientist",
+    "On-Premise LLM",
+    "LangGraph",
+    "Ollama",
+    "Vision-Language Models",
     "Agentic AI",
     "LLM",
     "RAG",

@@ -4,14 +4,17 @@ export const profile = {
   name: "Muhammed Afsal P M",
   shortName: "Afsal",
   initials: "MA",
-  role: "AI Engineer · Data Scientist",
-  currentTitle: "Associate Software Engineer (AI)",
+  role: "Agentic AI Engineer",
+  // Rotated in the hero headline
+  roles: ["Agentic AI Engineer", "LLM & RAG Systems Builder", "Multi-Agent Orchestrator", "On-Premise LLM Specialist"],
+  currentTitle: "Agentic AI Engineer",
+  currentCompany: "NGXP Technologies",
   location: "Kochi, Kerala, India",
   tagline:
-    "I build agentic AI systems, multimodal conversational platforms and production LLM pipelines — from RAG and multi-agent orchestration to scalable FastAPI microservices on AWS and Azure.",
+    "I build agentic AI systems, multimodal platforms and production LLM pipelines — from RAG and multi-agent orchestration to cost-effective on-premise LLMs and scalable FastAPI microservices on AWS and Azure.",
   summary: [
-    "Results-driven AI Engineer with 2+ years of experience specializing in agentic AI systems, multimodal conversational platforms, and production LLM pipelines across BFSI, healthcare, and enterprise automation.",
-    "I design and deploy scalable AI solutions using Retrieval-Augmented Generation (RAG), multi-agent orchestration, FastAPI microservices, vector databases, and cloud-native deployments on AWS and Azure — including real-time voice and chat AI systems.",
+    "Results-driven AI Engineer specializing in agentic AI systems, multimodal conversational platforms, and production LLM pipelines across BFSI, healthcare, oil & gas, and enterprise automation.",
+    "I design and deploy scalable AI solutions using Retrieval-Augmented Generation (RAG), multi-agent orchestration (CrewAI, LangGraph), vision-language models, FastAPI microservices and vector databases — deployed cloud-native on AWS and Azure or fully on-premise with local LLMs for cost-effective, private inference without compromising accuracy.",
     "I also build end-to-end machine learning systems covering model training, fine-tuning, deployment, and monitoring, with a strong focus on performance, scalability, and reliability.",
   ],
   email: "muhammedafsalpmtech@gmail.com",
@@ -27,11 +30,68 @@ export const socials = [
   { label: "Kaggle", href: "https://www.kaggle.com/muhammedafsalpm", icon: "kaggle" },
 ] as const;
 
-export const stats = [
-  { value: "2+", label: "Years in AI" },
-  { value: "4", label: "Companies & startups" },
-  { value: "8+", label: "Production AI projects" },
-  { value: "6", label: "Certifications" },
+// Scrolling tech strip in the hero (icon keys map to components/TechMarquee.tsx)
+export const techStack = [
+  "Python",
+  "FastAPI",
+  "CrewAI",
+  "LangGraph",
+  "LangChain",
+  "Langfuse",
+  "OpenAI",
+  "Gemini",
+  "Ollama",
+  "Hugging Face",
+  "LiveKit",
+  "Qdrant",
+  "ChromaDB",
+  "FAISS",
+  "MongoDB",
+  "MySQL",
+  "Redis",
+  "RabbitMQ",
+  "Celery",
+  "Docker",
+  "Kubernetes",
+  "AWS",
+  "Azure",
+  "TensorFlow",
+  "scikit-learn",
+  "GitHub Actions",
+];
+
+// "How I build" workflow section
+export const workflow = [
+  {
+    step: "Understand",
+    icon: "target",
+    text: "Scope the problem, data and success metrics with stakeholders before writing a line of code.",
+  },
+  {
+    step: "Retrieve",
+    icon: "database",
+    text: "Ingest, chunk and embed knowledge into vector stores like ChromaDB, FAISS and Qdrant.",
+  },
+  {
+    step: "Orchestrate",
+    icon: "branch",
+    text: "Design multi-agent workflows with CrewAI and LangGraph: tool-calling, memory and guardrails.",
+  },
+  {
+    step: "Serve",
+    icon: "server",
+    text: "Ship async FastAPI microservices backed by Redis, RabbitMQ and Celery.",
+  },
+  {
+    step: "Deploy",
+    icon: "cloud",
+    text: "Containerize with Docker and roll out on Kubernetes across AWS, Azure or on-premise with local LLMs.",
+  },
+  {
+    step: "Monitor",
+    icon: "activity",
+    text: "Trace quality, latency and cost with Langfuse; iterate with evaluations and user feedback.",
+  },
 ];
 
 export const skills = [
@@ -42,6 +102,8 @@ export const skills = [
       "Generative AI",
       "RAG",
       "LLM Fine-tuning",
+      "On-Premise / Local LLMs",
+      "Vision-Language Models (VLMs)",
       "Hugging Face Transformers",
       "Embeddings",
       "Machine Learning",
@@ -51,11 +113,11 @@ export const skills = [
   },
   {
     group: "Agents & Frameworks",
-    items: ["CrewAI", "Multi-agent Systems", "LiveKit", "Twilio", "TensorFlow", "scikit-learn", "Streamlit", "YOLO", "DeepSORT"],
+    items: ["CrewAI", "LangGraph", "Ollama", "Langfuse", "Multi-agent Systems", "LiveKit", "Twilio", "TensorFlow", "scikit-learn", "Streamlit", "YOLO", "DeepSORT"],
   },
   {
     group: "Programming & Databases",
-    items: ["Python", "SQL", "FastAPI", "MongoDB", "MySQL", "Redis", "SQLite", "ChromaDB", "FAISS", "Qdrant"],
+    items: ["Python", "SQL", "FastAPI", "MongoDB", "MySQL Server", "Redis", "SQLite", "ChromaDB", "FAISS", "Qdrant"],
   },
   {
     group: "Cloud & DevOps",
@@ -77,6 +139,7 @@ export const skills = [
 
 export type Experience = {
   company: string;
+  current?: boolean;
   companyUrl?: string;
   note?: string;
   role: string;
@@ -87,6 +150,19 @@ export type Experience = {
 };
 
 export const experience: Experience[] = [
+  {
+    company: "NGXP Technologies",
+    current: true,
+    role: "Agentic AI Engineer",
+    period: "Jun 2026 – Present",
+    points: [
+      "Building agentic AI workflows with LangGraph on on-premise (local) LLMs served through Ollama, delivering cost-effective AI without compromising accuracy for oil & gas and enterprise use cases.",
+      "Working with vision-language models (VLMs) for multimodal understanding, including a real-time driver-safety platform that pairs YOLO detection over video/RTSP streams with VLM verification to filter false positives and trigger alerts.",
+      "Implementing LLM observability with Langfuse: tracing, evaluation, and latency and cost monitoring across agent pipelines.",
+      "Developing FastAPI services backed by MySQL Server for data persistence, audit logging and analytics.",
+    ],
+    tags: ["LangGraph", "Ollama", "On-Premise LLMs", "VLMs", "Langfuse", "YOLO", "FastAPI", "MySQL Server"],
+  },
   {
     company: "Techvantage Systems Pvt. Ltd",
     companyUrl: "https://techvantage.ai",
@@ -278,6 +354,7 @@ export const publication = {
 
 export const navLinks = [
   { label: "About", href: "#about" },
+  { label: "Approach", href: "#approach" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },

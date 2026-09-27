@@ -7,8 +7,8 @@ const facts = [
   { icon: FiBriefcase, label: "Role", value: profile.currentTitle },
   { icon: FiMapPin, label: "Location", value: profile.location },
   { icon: FiBookOpen, label: "Education", value: "B.Tech CSE · CGPA 8.46" },
-  { icon: FiAward, label: "Certified", value: "Azure Data Scientist (DP-100)" },
-  { icon: FiGlobe, label: "Domains", value: "BFSI · Healthcare · Enterprise" },
+  { icon: FiAward, label: "Certified", value: "Microsoft Azure DP-100 · DP-900" },
+  { icon: FiGlobe, label: "Domains", value: "BFSI · Healthcare · Oil & Gas · Enterprise" },
   { icon: FiMail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
 ];
 
@@ -39,7 +39,7 @@ export default function About() {
                       {value}
                     </a>
                   ) : (
-                    <p className="truncate font-medium">{value}</p>
+                    <p className="font-medium">{value}</p>
                   )}
                 </div>
               </li>

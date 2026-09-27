@@ -9,10 +9,9 @@ export default function Projects() {
   return (
     <Section
       id="projects"
-      eyebrow="04 · Projects"
+      eyebrow="05 · Projects"
       title="Selected work"
       intro="Production platforms and applied AI projects across agentic systems, RAG, voice AI and classical ML."
-      className="bg-elevated/50"
     >
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
@@ -20,7 +19,7 @@ export default function Projects() {
             as="article"
             key={p.title}
             delay={(i % 3) * 80}
-            className={`group relative flex flex-col rounded-2xl border bg-bg p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/5 ${
+            className={`spotlight group flex flex-col rounded-2xl border bg-elevated p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/5 ${
               p.featured ? "border-accent/40" : "border-line hover:border-accent/50"
             }`}
           >
@@ -74,7 +73,7 @@ export default function Projects() {
             href={github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-line bg-bg px-5 py-3 text-sm font-semibold transition hover:border-accent hover:text-accent"
+            className="inline-flex items-center gap-2 rounded-lg border border-line bg-elevated px-5 py-3 text-sm font-semibold transition hover:border-accent hover:text-accent"
           >
             <FiGithub /> More on GitHub <FiArrowUpRight />
           </a>

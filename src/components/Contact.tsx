@@ -19,9 +19,9 @@ export default function Contact() {
   };
 
   return (
-    <Section id="contact" eyebrow="06 · Contact" title="Let's build something intelligent" className="bg-elevated/50">
+    <Section id="contact" eyebrow="07 · Contact" title="Let's build something intelligent">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_1fr]">
-        <Reveal className="relative overflow-hidden rounded-3xl border border-line bg-bg p-8 sm:p-10">
+        <Reveal className="relative overflow-hidden rounded-3xl border border-line bg-elevated p-8 sm:p-10">
           <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
           <p className="max-w-md text-lg leading-relaxed text-muted">
             I&apos;m open to AI engineering roles, collaborations and interesting problems in agentic AI, RAG and
@@ -37,7 +37,7 @@ export default function Contact() {
             <button
               type="button"
               onClick={copyEmail}
-              className="inline-flex items-center gap-2 rounded-lg border border-line bg-elevated px-5 py-3 text-sm font-semibold transition hover:border-accent hover:text-accent"
+              className="inline-flex items-center gap-2 rounded-lg border border-line bg-bg px-5 py-3 text-sm font-semibold transition hover:border-accent hover:text-accent"
             >
               {copied ? <FiCheck /> : <FiCopy />} {copied ? "Copied!" : "Copy email"}
             </button>
@@ -72,7 +72,7 @@ export default function Contact() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-2xl border border-line bg-bg p-5 transition hover:border-accent/50"
+                  className="spotlight group flex items-center gap-4 rounded-2xl border border-line bg-elevated p-5 transition hover:border-accent/50"
                 >
                   <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent">
                     <Icon size={20} />

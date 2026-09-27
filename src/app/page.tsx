@@ -7,6 +7,8 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import Spotlight from "@/components/Spotlight";
+import Workflow from "@/components/Workflow";
 import { profile, socials } from "@/data/profile";
 
 const jsonLd = {
@@ -23,10 +25,12 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Spotlight />
       <Navbar />
       <main>
         <Hero />
         <About />
+        <Workflow />
         <Skills />
         <Experience />
         <Projects />
