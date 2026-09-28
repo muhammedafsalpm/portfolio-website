@@ -9,17 +9,18 @@ export const profile = {
   roles: ["Agentic AI Engineer", "LLM & RAG Systems Builder", "Multi-Agent Orchestrator", "On-Premise LLM Specialist"],
   currentTitle: "Agentic AI Engineer",
   currentCompany: "NGXP Technologies",
-  location: "Kochi, Kerala, India",
+  location: "Kochi, Keralam, India",
   tagline:
     "I build agentic AI systems, multimodal platforms and production LLM pipelines — from RAG and multi-agent orchestration to cost-effective on-premise LLMs and scalable FastAPI microservices on AWS and Azure.",
   summary: [
-    "Results-driven AI Engineer specializing in agentic AI systems, multimodal conversational platforms, and production LLM pipelines across BFSI, healthcare, oil & gas, and enterprise automation.",
-    "I design and deploy scalable AI solutions using Retrieval-Augmented Generation (RAG), multi-agent orchestration (CrewAI, LangGraph), vision-language models, FastAPI microservices and vector databases — deployed cloud-native on AWS and Azure or fully on-premise with local LLMs for cost-effective, private inference without compromising accuracy.",
-    "I also build end-to-end machine learning systems covering model training, fine-tuning, deployment, and monitoring, with a strong focus on performance, scalability, and reliability.",
+    "Agentic AI Engineer with hands-on experience designing, building and deploying production-grade Generative AI systems across BFSI, healthcare, oil & gas and enterprise automation. I specialize in agentic AI, multi-agent orchestration and LLM applications — from Retrieval-Augmented Generation (RAG) and NL-to-SQL database assistants to AI chatbots and real-time voice agents (LiveKit, Twilio, STT/TTS).",
+    "I architect multi-agent workflows with LangGraph, CrewAI and LangChain, connect agents to tools and enterprise data through the Model Context Protocol (MCP) and function calling, and ground responses with RAG over vector databases such as Qdrant, ChromaDB and FAISS. I work with LLMs including GPT-4, Azure OpenAI, Gemini, Llama 3.1 and Groq, as well as vision-language models (VLMs), and deploy on-premise local LLMs with Ollama for private, cost-effective inference without compromising accuracy.",
+    "On the engineering side, I build scalable Python and FastAPI microservices with Redis, RabbitMQ, Celery, MongoDB and MySQL, containerized with Docker and Kubernetes on AWS and Azure through CI/CD pipelines. I fine-tune models with LoRA and QLoRA and own the full ML lifecycle — training, evaluation, deployment and LLM observability with Langfuse — with a strong focus on performance, scalability and reliability.",
   ],
   email: "muhammedafsalpmtech@gmail.com",
   phone: "+91 98460 93491",
   resume: "/Muhammed_Afsal_P_M_Resume.pdf",
+  photo: "/profile.jpg",
   extra: "Valid Indian Passport",
 };
 
@@ -38,6 +39,7 @@ export const techStack = [
   "LangGraph",
   "LangChain",
   "Langfuse",
+  "MCP",
   "OpenAI",
   "Gemini",
   "Ollama",
@@ -60,40 +62,6 @@ export const techStack = [
   "GitHub Actions",
 ];
 
-// "How I build" workflow section
-export const workflow = [
-  {
-    step: "Understand",
-    icon: "target",
-    text: "Scope the problem, data and success metrics with stakeholders before writing a line of code.",
-  },
-  {
-    step: "Retrieve",
-    icon: "database",
-    text: "Ingest, chunk and embed knowledge into vector stores like ChromaDB, FAISS and Qdrant.",
-  },
-  {
-    step: "Orchestrate",
-    icon: "branch",
-    text: "Design multi-agent workflows with CrewAI and LangGraph: tool-calling, memory and guardrails.",
-  },
-  {
-    step: "Serve",
-    icon: "server",
-    text: "Ship async FastAPI microservices backed by Redis, RabbitMQ and Celery.",
-  },
-  {
-    step: "Deploy",
-    icon: "cloud",
-    text: "Containerize with Docker and roll out on Kubernetes across AWS, Azure or on-premise with local LLMs.",
-  },
-  {
-    step: "Monitor",
-    icon: "activity",
-    text: "Trace quality, latency and cost with Langfuse; iterate with evaluations and user feedback.",
-  },
-];
-
 export const skills = [
   {
     group: "AI & Machine Learning",
@@ -101,7 +69,9 @@ export const skills = [
       "LLMs",
       "Generative AI",
       "RAG",
-      "LLM Fine-tuning",
+      "NL-to-SQL",
+      "Voice Agents",
+      "LLM Fine-tuning (LoRA / QLoRA)",
       "On-Premise / Local LLMs",
       "Vision-Language Models (VLMs)",
       "Hugging Face Transformers",
@@ -113,7 +83,7 @@ export const skills = [
   },
   {
     group: "Agents & Frameworks",
-    items: ["CrewAI", "LangGraph", "Ollama", "Langfuse", "Multi-agent Systems", "LiveKit", "Twilio", "TensorFlow", "scikit-learn", "Streamlit", "YOLO", "DeepSORT"],
+    items: ["CrewAI", "LangGraph", "MCP (Model Context Protocol)", "Ollama", "Langfuse", "Multi-agent Systems", "LiveKit", "Twilio", "TensorFlow", "scikit-learn", "Streamlit", "YOLO", "DeepSORT"],
   },
   {
     group: "Programming & Databases",
@@ -137,6 +107,15 @@ export const skills = [
   },
 ];
 
+export type Venture = {
+  company: string;
+  note: string;
+  role: string;
+  period: string;
+  points: string[];
+  tags: string[];
+};
+
 export type Experience = {
   company: string;
   current?: boolean;
@@ -147,6 +126,8 @@ export type Experience = {
   period: string;
   points: string[];
   tags: string[];
+  // Startups / products built inside this company
+  ventures?: Venture[];
 };
 
 export const experience: Experience[] = [
@@ -154,19 +135,21 @@ export const experience: Experience[] = [
     company: "NGXP Technologies",
     current: true,
     role: "Agentic AI Engineer",
+    location: "Kochi, Keralam",
     period: "Jun 2026 – Present",
     points: [
-      "Building agentic AI workflows with LangGraph on on-premise (local) LLMs served through Ollama, delivering cost-effective AI without compromising accuracy for oil & gas and enterprise use cases.",
-      "Working with vision-language models (VLMs) for multimodal understanding, including a real-time driver-safety platform that pairs YOLO detection over video/RTSP streams with VLM verification to filter false positives and trigger alerts.",
-      "Implementing LLM observability with Langfuse: tracing, evaluation, and latency and cost monitoring across agent pipelines.",
-      "Developing FastAPI services backed by MySQL Server for data persistence, audit logging and analytics.",
+      "Building AI features for the oil & gas industry on a fully on-premise, cost-effective stack: local LLMs and vision-language models (VLMs) served through Ollama, without compromising accuracy.",
+      "Created an AI database assistant that converts natural language to SQL over MySQL Server, orchestrated with LangGraph agents.",
+      "Implemented LLM observability with Langfuse: tracing, evaluation, and latency and cost monitoring across agent pipelines.",
+      "Developing RAG-based AI features and chatbots for enterprise knowledge and day-to-day operations.",
     ],
-    tags: ["LangGraph", "Ollama", "On-Premise LLMs", "VLMs", "Langfuse", "YOLO", "FastAPI", "MySQL Server"],
+    tags: ["LangGraph", "Ollama", "On-Premise LLMs", "VLMs", "NL-to-SQL", "Langfuse", "RAG", "MySQL Server"],
   },
   {
     company: "Techvantage Systems Pvt. Ltd",
     companyUrl: "https://techvantage.ai",
     role: "Associate Software Engineer (AI)",
+    location: "Trivandrum, Keralam",
     period: "Dec 2024 – Apr 2026",
     points: [
       "Designed and deployed multi-agent AI systems using CrewAI and LLMs (GPT-4, Groq, Llama), including LLM fine-tuning, to automate verification, risk assessment and decision-making in banking, insurance and audit domains.",
@@ -176,35 +159,37 @@ export const experience: Experience[] = [
       "Delivered production-grade solutions integrating FastAPI, AWS and SQL/NoSQL databases — secure OTP authentication, multi-language RAG, fraud detection and automated reporting.",
     ],
     tags: ["CrewAI", "GPT-4", "Groq", "Llama", "FastAPI", "AWS", "YOLO", "ChromaDB"],
-  },
-  {
-    company: "Zentis AI",
-    note: "Startup incubated within Techvantage",
-    role: "Core Team Member – Associate Software Engineer (AI)",
-    period: "May 2025 – Oct 2025",
-    points: [
-      "Architected a modular microservices-based AI platform from inception using autonomous agents, enabling workflow automation, document intelligence and decision support across BFSI, healthcare and manufacturing.",
-      "Implemented AI orchestration pipelines using LLMs (Azure OpenAI, Groq), RAG, vector search and CrewAI multi-agent frameworks for contextual reasoning and knowledge-driven automation.",
-      "Built scalable backend services with FastAPI, MongoDB and RabbitMQ; containerized with Docker and deployed on Kubernetes across Azure and AWS with secure APIs and fault tolerance.",
-      "Established production DevOps practices — CI/CD, automated testing, SonarQube quality gates, monitoring and compliance controls — improving reliability and reducing manual audit effort.",
+    ventures: [
+      {
+        company: "Zentis AI",
+        note: "Startup under Techvantage",
+        role: "Core Team Member – Associate Software Engineer (AI)",
+        period: "May 2025 – Oct 2025",
+        points: [
+          "Architected a modular microservices-based AI platform from inception using autonomous agents, enabling workflow automation, document intelligence and decision support across BFSI, healthcare and manufacturing.",
+          "Implemented AI orchestration pipelines using LLMs (Azure OpenAI, Groq), RAG, vector search and CrewAI multi-agent frameworks for contextual reasoning and knowledge-driven automation.",
+          "Built scalable backend services with FastAPI, MongoDB and RabbitMQ; containerized with Docker and deployed on Kubernetes across Azure and AWS with secure APIs and fault tolerance.",
+          "Established production DevOps practices — CI/CD, automated testing, SonarQube quality gates, monitoring and compliance controls — improving reliability and reducing manual audit effort.",
+        ],
+        tags: ["Azure OpenAI", "CrewAI", "RabbitMQ", "Docker", "Kubernetes", "CI/CD"],
+      },
+      {
+        company: "Go-Do",
+        note: "Product under Techvantage",
+        role: "Core Team Member – Associate Software Engineer (AI)",
+        period: "Dec 2025 – Feb 2026",
+        points: [
+          "Developed a multilingual agentic AI concierge accessible via WhatsApp and voice, letting users complete real-world tasks through natural language across multiple Indian languages.",
+          "Architected end-to-end conversational pipelines using FastAPI, LiveKit, Twilio WhatsApp API, Redis, MongoDB and FAISS-based RAG for real-time task orchestration, session persistence and knowledge retrieval.",
+          "Implemented multimodal workflows integrating STT, TTS and LLM reasoning (Gemini, OpenAI, Sarvam) — scalable voice-and-text agents with tool-calling, analytics logging and production deployment.",
+        ],
+        tags: ["LiveKit", "Twilio", "Redis", "FAISS", "Gemini", "Sarvam", "STT/TTS"],
+      },
     ],
-    tags: ["Azure OpenAI", "CrewAI", "RabbitMQ", "Docker", "Kubernetes", "CI/CD"],
-  },
-  {
-    company: "Go-Do",
-    note: "Startup incubated within Techvantage",
-    role: "Core Team Member – Associate Software Engineer (AI)",
-    period: "Dec 2025 – Feb 2026",
-    points: [
-      "Developed a multilingual agentic AI concierge accessible via WhatsApp and voice, letting users complete real-world tasks through natural language across multiple Indian languages.",
-      "Architected end-to-end conversational pipelines using FastAPI, LiveKit, Twilio WhatsApp API, Redis, MongoDB and FAISS-based RAG for real-time task orchestration, session persistence and knowledge retrieval.",
-      "Implemented multimodal workflows integrating STT, TTS and LLM reasoning (Gemini, OpenAI, Sarvam) — scalable voice-and-text agents with tool-calling, analytics logging and production deployment.",
-    ],
-    tags: ["LiveKit", "Twilio", "Redis", "FAISS", "Gemini", "Sarvam", "STT/TTS"],
   },
   {
     company: "Bharat Petroleum Corporation Limited",
-    note: "Kochi Refinery",
+    note: "Kochi Refinery, Keralam",
     role: "AI Engineer (Apprenticeship)",
     period: "Dec 2023 – Dec 2024",
     points: [
@@ -230,6 +215,14 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "AI Database Assistant",
+    subtitle: "Natural Language to SQL",
+    description:
+      "Ask questions in plain English and get answers from MySQL Server. LangGraph agents generate, validate and run SQL on local LLMs via Ollama, with Langfuse tracing every step — fully on-premise and cost-effective.",
+    tags: ["LangGraph", "Ollama", "MySQL", "Langfuse", "NL-to-SQL"],
+    featured: true,
+  },
+  {
     title: "Zentis.ai",
     subtitle: "Agentic AI Platform",
     description:
@@ -253,6 +246,13 @@ export const projects: Project[] = [
     tags: ["FastAPI", "ChromaDB", "OpenAI", "Ollama", "Scraping"],
     github: "https://github.com/muhammedafsalpm/Intelligent-Publisher-Website-Classifier",
     featured: true,
+  },
+  {
+    title: "Llama 3.1 8B Fine-tuning",
+    subtitle: "Parameter-Efficient LLM Tuning",
+    description:
+      "Fine-tuned Llama 3.1 8B on GPU with LoRA and 4-bit QLoRA, adapting an open-weight model to domain tasks at a fraction of the memory and cost of full fine-tuning.",
+    tags: ["Llama 3.1 8B", "LoRA", "QLoRA", "GPU", "PEFT"],
   },
   {
     title: "Contract Management Tool",
@@ -281,13 +281,6 @@ export const projects: Project[] = [
     description:
       "AI-powered chatbot for HR and operational workflows using autonomous agent-based intent classification and LLMs for contextual responses.",
     tags: ["Agents", "Intent Classification", "RAG"],
-  },
-  {
-    title: "Prediction Models",
-    subtitle: "Classical Machine Learning",
-    description:
-      "ML models for cancer prediction, telecom churn prediction (AdaBoost, Gradient Boosting, Logistic Regression, Decision Tree) and price prediction using regression algorithms.",
-    tags: ["scikit-learn", "Ensembles", "Regression"],
   },
 ];
 
@@ -354,7 +347,6 @@ export const publication = {
 
 export const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Approach", href: "#approach" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },

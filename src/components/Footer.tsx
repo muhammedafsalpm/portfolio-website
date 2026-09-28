@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-line">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-8 sm:flex-row sm:px-8">
         <p className="text-sm text-subtle">
-          © {new Date().getFullYear()} {profile.name}. Built with Next.js &amp; Tailwind CSS.
+          © {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
         <div className="flex items-center gap-1">
           {socials.map((s) => {

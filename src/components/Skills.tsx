@@ -6,7 +6,7 @@ export default function Skills() {
   return (
     <Section
       id="skills"
-      eyebrow="03 · Skills"
+      eyebrow="02 · Skills"
       title="Technical toolkit"
       intro="The languages, frameworks and platforms I use to take AI systems from prototype to production."
     >

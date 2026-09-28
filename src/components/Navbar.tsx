@@ -47,16 +47,12 @@ export default function Navbar() {
     >
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 h-0.5 origin-left bg-linear-to-r from-accent to-accent-2"
+        className="absolute inset-x-0 top-0 h-0.5 origin-left bg-accent"
         style={{ transform: `scaleX(${progress})` }}
       />
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a href="#top" className="flex items-center gap-2.5 font-semibold" onClick={() => setOpen(false)}>
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-linear-to-br from-accent to-accent-2 font-mono text-xs font-bold text-white">
-            {profile.initials}
-          </span>
-          <span className="hidden sm:inline">{profile.name}</span>
-        </a>
+        {/* Keeps the nav links and buttons in the same place now the logo is gone */}
+        <span aria-hidden className="w-9" />
 
         <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((l) => (

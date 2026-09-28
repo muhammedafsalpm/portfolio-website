@@ -1,13 +1,36 @@
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiMapPin } from "react-icons/fi";
 import { experience } from "@/data/profile";
 import Reveal from "./Reveal";
 import Section, { Chip } from "./Section";
+
+function Points({ points }: { points: string[] }) {
+  return (
+    <ul className="mt-5 space-y-2.5 text-[15px] leading-relaxed text-muted">
+      {points.map((p) => (
+        <li key={p.slice(0, 30)} className="flex gap-3">
+          <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
+          <span>{p}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Tags({ tags }: { tags: string[] }) {
+  return (
+    <div className="mt-5 flex flex-wrap gap-2">
+      {tags.map((t) => (
+        <Chip key={t}>{t}</Chip>
+      ))}
+    </div>
+  );
+}
 
 export default function Experience() {
   return (
     <Section
       id="experience"
-      eyebrow="04 · Experience"
+      eyebrow="03 · Experience"
       title="Where I've worked"
       intro="Building agentic AI, conversational platforms and ML pipelines for enterprise, startup and public-sector teams."
       className="bg-elevated/50"
@@ -38,6 +61,11 @@ export default function Experience() {
                     )}
                     {job.note && <span className="text-sm text-subtle">· {job.note}</span>}
                   </p>
+                  {job.location && (
+                    <p className="mt-1 inline-flex items-center gap-1 text-sm text-subtle">
+                      <FiMapPin size={13} /> {job.location}
+                    </p>
+                  )}
                 </div>
                 <span className="flex shrink-0 items-center gap-2 font-mono text-sm text-subtle">
                   {job.current && (
@@ -48,19 +76,34 @@ export default function Experience() {
                   {job.period}
                 </span>
               </div>
-              <ul className="mt-5 space-y-2.5 text-[15px] leading-relaxed text-muted">
-                {job.points.map((p) => (
-                  <li key={p.slice(0, 30)} className="flex gap-3">
-                    <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {job.tags.map((t) => (
-                  <Chip key={t}>{t}</Chip>
-                ))}
-              </div>
+              <Points points={job.points} />
+              <Tags tags={job.tags} />
+
+              {job.ventures && job.ventures.length > 0 && (
+                <div className="mt-8 border-t border-line pt-6">
+                  <p className="font-mono text-xs uppercase tracking-wider text-subtle">
+                    Startups &amp; products at {job.company.replace(/ Pvt\. Ltd$/, "")}
+                  </p>
+                  <div className="mt-4 space-y-4">
+                    {job.ventures.map((v) => (
+                      <div key={v.company} className="rounded-xl border border-line bg-elevated p-5 sm:p-6">
+                        <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:justify-between">
+                          <div>
+                            <h4 className="font-semibold">{v.role}</h4>
+                            <p className="mt-0.5 text-sm">
+                              <span className="font-medium text-accent">{v.company}</span>
+                              <span className="text-subtle"> · {v.note}</span>
+                            </p>
+                          </div>
+                          <span className="shrink-0 font-mono text-sm text-subtle">{v.period}</span>
+                        </div>
+                        <Points points={v.points} />
+                        <Tags tags={v.tags} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </article>
           </Reveal>
         ))}

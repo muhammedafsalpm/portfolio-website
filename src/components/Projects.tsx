@@ -9,9 +9,9 @@ export default function Projects() {
   return (
     <Section
       id="projects"
-      eyebrow="05 · Projects"
+      eyebrow="04 · Projects"
       title="Selected work"
-      intro="Production platforms and applied AI projects across agentic systems, RAG, voice AI and classical ML."
+      intro="Production platforms and applied AI projects across agentic systems, RAG, voice AI, NL-to-SQL and LLM fine-tuning."
     >
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
@@ -19,7 +19,7 @@ export default function Projects() {
             as="article"
             key={p.title}
             delay={(i % 3) * 80}
-            className={`spotlight group flex flex-col rounded-2xl border bg-elevated p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/5 ${
+            className={`spotlight group flex flex-col rounded-2xl border bg-elevated p-6 transition hover:-translate-y-1 ${
               p.featured ? "border-accent/40" : "border-line hover:border-accent/50"
             }`}
           >

@@ -8,7 +8,6 @@ import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Spotlight from "@/components/Spotlight";
-import Workflow from "@/components/Workflow";
 import { profile, socials } from "@/data/profile";
 
 const jsonLd = {
@@ -17,7 +16,7 @@ const jsonLd = {
   name: profile.name,
   jobTitle: profile.currentTitle,
   email: `mailto:${profile.email}`,
-  address: { "@type": "PostalAddress", addressLocality: "Kochi", addressRegion: "Kerala", addressCountry: "IN" },
+  address: { "@type": "PostalAddress", addressLocality: "Kochi", addressRegion: "Keralam", addressCountry: "IN" },
   sameAs: socials.map((s) => s.href),
 };
 
@@ -30,7 +29,6 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Workflow />
         <Skills />
         <Experience />
         <Projects />

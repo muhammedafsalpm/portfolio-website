@@ -9,8 +9,7 @@ import TypedRole from "./TypedRole";
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-20">
-      <div className="bg-grid pointer-events-none absolute inset-0 -z-10" />
-      <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-accent/10 blur-3xl" />
+      <div className="bg-binary pointer-events-none absolute inset-0 -z-10" />
 
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.1fr_1fr]">
         <Reveal>
@@ -41,7 +40,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:brightness-110 dark:text-slate-950"
+              className="group inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110 dark:text-[#06121b]"
             >
               View my work <FiArrowRight className="transition group-hover:translate-x-0.5" />
             </a>

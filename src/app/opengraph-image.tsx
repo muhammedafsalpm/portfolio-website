@@ -16,7 +16,7 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "linear-gradient(135deg, #070b16 0%, #111a33 60%, #0b2a3a 100%)",
+          background: "linear-gradient(160deg, #06121b 0%, #0b2a3d 70%, #0679b8 140%)",
           color: "#e2e8f0",
           fontFamily: "sans-serif",
         }}
@@ -29,7 +29,7 @@ export default function OpengraphImage() {
             borderRadius: 20,
             alignItems: "center",
             justifyContent: "center",
-            background: "linear-gradient(135deg, #6366f1, #06b6d4)",
+            background: "#0679b8",
             color: "white",
             fontSize: 38,
             fontWeight: 700,
@@ -38,8 +38,8 @@ export default function OpengraphImage() {
           {profile.initials}
         </div>
         <div style={{ display: "flex", fontSize: 72, fontWeight: 700, marginTop: 40 }}>{profile.name}</div>
-        <div style={{ display: "flex", fontSize: 40, marginTop: 12, color: "#818cf8" }}>{profile.role}</div>
-        <div style={{ display: "flex", fontSize: 28, marginTop: 28, color: "#94a3b8" }}>
+        <div style={{ display: "flex", fontSize: 40, marginTop: 12, color: "#6eaacc" }}>{profile.role}</div>
+        <div style={{ display: "flex", fontSize: 28, marginTop: 28, color: "#9bb0bf" }}>
           Agentic AI · RAG · On-Prem LLMs · VLMs · {profile.location}
         </div>
       </div>

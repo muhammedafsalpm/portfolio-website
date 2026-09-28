@@ -19,18 +19,17 @@ export default function Contact() {
   };
 
   return (
-    <Section id="contact" eyebrow="07 · Contact" title="Let's build something intelligent">
+    <Section id="contact" eyebrow="06 · Contact" title="Let's build something intelligent">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_1fr]">
         <Reveal className="relative overflow-hidden rounded-3xl border border-line bg-elevated p-8 sm:p-10">
-          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
           <p className="max-w-md text-lg leading-relaxed text-muted">
-            I&apos;m open to AI engineering roles, collaborations and interesting problems in agentic AI, RAG and
-            conversational systems. My inbox is always open.
+            I&apos;m open to AI engineering roles and collaborations in agentic AI, multi-agent orchestration, RAG,
+            voice agents and on-premise LLM solutions. If you&apos;re building in this space, I&apos;d be glad to connect.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition hover:brightness-110 dark:text-slate-950"
+              className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110 dark:text-[#06121b]"
             >
               <FiMail /> Say hello
             </a>

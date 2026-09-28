@@ -27,10 +27,10 @@ export default function TypedRole({ roles }: { roles: readonly string[] }) {
 
   return (
     <span className="block min-h-[1.15em] pb-1" aria-label={roles.join(", ")}>
-      <span className="text-gradient" aria-hidden>
+      <span className="text-accent" aria-hidden>
         {text}
       </span>
-      <span className="caret ml-0.5 inline-block w-[3px] translate-y-[0.08em] bg-accent-2 align-baseline" aria-hidden>
+      <span className="caret ml-0.5 inline-block w-[3px] translate-y-[0.08em] bg-accent align-baseline" aria-hidden>
         &nbsp;
       </span>
     </span>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { IconType } from "react-icons";
-import { FiCheckCircle, FiCpu, FiDatabase, FiMessageSquare, FiTarget, FiTool, FiZap } from "react-icons/fi";
+import { FiCheckCircle, FiCpu, FiDatabase, FiMessageSquare, FiMic, FiTarget, FiTool, FiZap } from "react-icons/fi";
 
 // Diagram coordinates live in a 520 x 440 space; HTML nodes are positioned in % of that.
 const W = 520;
@@ -10,59 +10,78 @@ const H = 440;
 
 type Node = { id: string; x: number; y: number; label: string; sub: string; icon: IconType };
 
-const INPUT: Node = { id: "input", x: 260, y: 42, label: "Request", sub: "chat · voice · API", icon: FiMessageSquare };
+// Two entry channels: a voice agent and a text chatbot assistant.
+const INPUTS: Node[] = [
+  { id: "voice", x: 150, y: 42, label: "Voice Agent", sub: "STT · TTS", icon: FiMic },
+  { id: "chat", x: 370, y: 42, label: "AI Chatbot", sub: "web · WhatsApp", icon: FiMessageSquare },
+];
 const ORCH: Node = { id: "orch", x: 260, y: 152, label: "Orchestrator", sub: "routing · memory", icon: FiCpu };
 const AGENTS: Node[] = [
   { id: "planner", x: 68, y: 280, label: "Planner", sub: "task graph", icon: FiTarget },
   { id: "retriever", x: 196, y: 280, label: "Retriever", sub: "RAG · vectors", icon: FiDatabase },
-  { id: "tools", x: 324, y: 280, label: "Tool Caller", sub: "APIs · DBs", icon: FiTool },
+  { id: "tools", x: 324, y: 280, label: "Tool Caller", sub: "MCP · APIs · SQL", icon: FiTool },
   { id: "evaluator", x: 452, y: 280, label: "Evaluator", sub: "guardrails", icon: FiCheckCircle },
 ];
-const OUTPUT: Node = { id: "output", x: 260, y: 398, label: "Response", sub: "streamed", icon: FiZap };
+const OUTPUT: Node = { id: "output", x: 260, y: 398, label: "Response", sub: "voice · text", icon: FiZap };
 
 const ORDER = ["input", "orch", "planner", "retriever", "tools", "evaluator", "output"] as const;
 
-const SCENARIOS = [
-  [
-    'Request: "Assess loan application #2481"',
-    "Routing task to 4 specialist agents",
-    "Split into KYC, income and risk checks",
-    "Top-5 policy chunks retrieved from Qdrant",
-    "Credit-bureau API called · KYC fetched",
-    "Guardrails passed · risk scored",
-    "Decision + audit report delivered ✓",
-  ],
-  [
-    'Voice (Malayalam): "Book a cab to the airport"',
-    "Intent detected · session restored from Redis",
-    "Plan: locate user → pick slot → confirm",
-    "User preferences retrieved via FAISS",
-    "Booking tool invoked · WhatsApp confirmation queued",
-    "Response validated · translated to Malayalam",
-    "Spoken reply streamed via TTS ✓",
-  ],
-  [
-    'Upload: "Review vendor_contract.pdf"',
-    "Document intelligence workflow started",
-    "Plan: extract clauses → compare → flag risks",
-    "Similar clauses matched in ChromaDB",
-    "Compliance rules engine queried",
-    "3 risky clauses flagged · citations attached",
-    "Contract summary + Q&A ready ✓",
-  ],
-  [
-    'Query: "Summarize refinery shift anomalies"',
-    "Routed to on-prem Llama via Ollama · no data leaves site",
-    "Plan: pull logs → detect anomalies → draft report",
-    "Shift logs fetched from MySQL Server",
-    "LangGraph tool node ran anomaly checks",
-    "Trace + cost logged in Langfuse · accuracy verified",
-    "Shift anomaly report generated ✓",
-  ],
+type Scenario = { channel: "voice" | "chat"; lines: string[] };
+
+const SCENARIOS: Scenario[] = [
+  {
+    channel: "chat",
+    lines: [
+      'Chat: "Crude throughput by unit last month?"',
+      "Routed to LangGraph SQL agent · local Llama via Ollama",
+      "Plan: map schema → draft SQL → validate",
+      "Schema + sample rows retrieved as context",
+      "Query executed on MySQL Server via MCP tool",
+      "SQL validated · trace + cost logged in Langfuse",
+      "Answer and table returned ✓",
+    ],
+  },
+  {
+    channel: "voice",
+    lines: [
+      'Voice (Malayalam): "Book a cab to the airport"',
+      "Speech transcribed · session restored from Redis",
+      "Plan: locate user → pick slot → confirm",
+      "User preferences retrieved via FAISS",
+      "Booking tool invoked · WhatsApp confirmation queued",
+      "Reply validated · translated to Malayalam",
+      "Spoken reply streamed via TTS ✓",
+    ],
+  },
+  {
+    channel: "chat",
+    lines: [
+      'Chat: "Assess loan application #2481"',
+      "Routing task to 4 specialist agents",
+      "Split into KYC, income and risk checks",
+      "Top-5 policy chunks retrieved from Qdrant",
+      "Credit-bureau API called · KYC fetched",
+      "Guardrails passed · risk scored",
+      "Decision + audit report delivered ✓",
+    ],
+  },
+  {
+    channel: "voice",
+    lines: [
+      'Voice: "What is the status of ticket 4821?"',
+      "Intent detected: support · caller verified",
+      "Plan: fetch ticket → summarise → respond",
+      "Knowledge base searched with RAG",
+      "Helpdesk API called over MCP",
+      "Answer checked for PII · policy OK",
+      "Spoken answer streamed via TTS ✓",
+    ],
+  },
 ];
 
 const TAG: Record<string, string> = {
-  input: "input",
+  voice: "voice-agent",
+  chat: "chatbot",
   orch: "orchestrator",
   planner: "planner",
   retriever: "retriever",
@@ -79,7 +98,7 @@ function NodeBox({ node, active, big }: { node: Node; active: boolean; big?: boo
     <div
       className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-xl border bg-elevated/95 px-2 py-1.5 text-center shadow-sm backdrop-blur transition-all duration-500 sm:px-3 sm:py-2 ${
         big ? "w-[34%]" : "w-[23%]"
-      } ${active ? "scale-105 border-accent shadow-lg shadow-accent/25" : "border-line"}`}
+      } ${active ? "scale-105 border-accent shadow-md" : "border-line"}`}
       style={pct(node)}
     >
       <div className="flex items-center justify-center gap-1.5">
@@ -117,32 +136,29 @@ export default function Orchestrator() {
   }, [running]);
 
   const step = tick % ORDER.length;
-  const scenario = Math.floor(tick / ORDER.length) % SCENARIOS.length;
-  const activeId = ORDER[step];
+  const scenario = SCENARIOS[Math.floor(tick / ORDER.length) % SCENARIOS.length];
+  // Step 0 lights up whichever channel (voice or chat) this scenario came in on.
+  const activeId = ORDER[step] === "input" ? scenario.channel : ORDER[step];
 
   // Last 4 log lines, carried across scenario boundaries.
   const lines = Array.from({ length: Math.min(4, tick + 1) }, (_, i) => {
     const t = tick - i;
     const s = t % ORDER.length;
-    const sc = Math.floor(t / ORDER.length) % SCENARIOS.length;
-    return { key: t, tag: TAG[ORDER[s]], text: SCENARIOS[sc][s] };
+    const sc = SCENARIOS[Math.floor(t / ORDER.length) % SCENARIOS.length];
+    return { key: t, tag: TAG[ORDER[s] === "input" ? sc.channel : ORDER[s]], text: sc.lines[s] };
   }).reverse();
 
   const agentPath = (a: Node) => `M${ORCH.x} ${ORCH.y + 26} C${ORCH.x} ${ORCH.y + 80}, ${a.x} ${a.y - 70}, ${a.x} ${a.y - 24}`;
   const outPath = (a: Node) => `M${a.x} ${a.y + 24} C${a.x} ${a.y + 70}, ${OUTPUT.x} ${OUTPUT.y - 70}, ${OUTPUT.x} ${OUTPUT.y - 24}`;
-  const inPath = `M${INPUT.x} ${INPUT.y + 22} L${ORCH.x} ${ORCH.y - 26}`;
+  const inPath = (n: Node) => `M${n.x} ${n.y + 22} C${n.x} ${n.y + 60}, ${ORCH.x} ${ORCH.y - 70}, ${ORCH.x} ${ORCH.y - 26}`;
 
   return (
     <div ref={root} className="relative">
-      <div className="absolute -inset-4 -z-10 rounded-3xl bg-linear-to-br from-accent/25 via-transparent to-accent-2/25 blur-2xl" />
-      <div className="overflow-hidden rounded-2xl border border-line bg-elevated/70 shadow-2xl shadow-black/5 backdrop-blur">
+      <div className="overflow-hidden rounded-2xl border border-line bg-elevated shadow-sm">
         <div className="flex items-center justify-between border-b border-line px-4 py-3">
-          <div className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-red-400/80" />
-            <span className="h-3 w-3 rounded-full bg-amber-400/80" />
-            <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
-            <span className="ml-3 font-mono text-xs text-subtle">agent-orchestrator</span>
-          </div>
+          <span className="font-mono text-xs text-subtle">
+            <span className="text-accent">~/</span>agent-orchestrator
+          </span>
           <span className="flex items-center gap-1.5 font-mono text-[11px] text-emerald-600 dark:text-emerald-400">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-current" /> live
           </span>
@@ -157,8 +173,20 @@ export default function Orchestrator() {
               </radialGradient>
             </defs>
 
-            <path id="p-in" d={inPath} fill="none" stroke="var(--border)" strokeWidth="1.5" />
-            <path d={inPath} className="flow-line" fill="none" stroke="var(--accent)" strokeOpacity="0.6" strokeWidth="1.5" />
+            {INPUTS.map((n) => (
+              <g key={n.id}>
+                <path id={`p-in-${n.id}`} d={inPath(n)} fill="none" stroke="var(--border)" strokeWidth="1.5" />
+                <path
+                  d={inPath(n)}
+                  className="flow-line"
+                  fill="none"
+                  stroke="var(--accent)"
+                  strokeOpacity={activeId === n.id ? 0.95 : 0.3}
+                  strokeWidth={activeId === n.id ? 2 : 1.5}
+                  style={{ transition: "stroke-opacity .5s" }}
+                />
+              </g>
+            ))}
 
             {AGENTS.map((a) => {
               const hot = activeId === a.id;
@@ -189,11 +217,13 @@ export default function Orchestrator() {
             })}
 
             {/* Moving data packets */}
-            <circle className="packet" r="5" fill="url(#packet)">
-              <animateMotion dur="1.8s" repeatCount="indefinite">
-                <mpath href="#p-in" />
-              </animateMotion>
-            </circle>
+            {INPUTS.map((n, i) => (
+              <circle key={`pk-${n.id}`} className="packet" r="5" fill="url(#packet)">
+                <animateMotion dur="1.8s" begin={`${i * 0.9}s`} repeatCount="indefinite">
+                  <mpath href={`#p-in-${n.id}`} />
+                </animateMotion>
+              </circle>
+            ))}
             {AGENTS.map((a, i) => (
               <g key={`pk-${a.id}`} className="packet">
                 <circle r="4.5" fill="url(#packet)">
@@ -223,7 +253,9 @@ export default function Orchestrator() {
             />
           </svg>
 
-          <NodeBox node={INPUT} active={activeId === "input"} />
+          {INPUTS.map((n) => (
+            <NodeBox key={n.id} node={n} active={activeId === n.id} />
+          ))}
           <NodeBox node={ORCH} active={activeId === "orch"} big />
           {AGENTS.map((a) => (
             <NodeBox key={a.id} node={a} active={activeId === a.id} />

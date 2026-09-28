@@ -5,7 +5,7 @@ import Section from "./Section";
 
 export default function Education() {
   return (
-    <Section id="education" eyebrow="06 · Education" title="Education, certifications & research" className="bg-elevated/50">
+    <Section id="education" eyebrow="05 · Education" title="Education, certifications & research" className="bg-elevated/50">
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
         <div className="space-y-5">
           <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-subtle">
