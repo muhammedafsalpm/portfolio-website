@@ -9,7 +9,7 @@ const facts = [
   { icon: FiMapPin, label: "Location", value: profile.location },
   { icon: FiBookOpen, label: "Education", value: "B.Tech CSE · CGPA 8.46" },
   { icon: FiAward, label: "Certified", value: "Microsoft Azure DP-100 · DP-900" },
-  { icon: FiGlobe, label: "Domains", value: "BFSI · Healthcare · Oil & Gas · Enterprise" },
+  { icon: FiGlobe, label: "Domains", value: "Oil & Gas · BFSI · Healthcare · AdTech · Enterprise" },
   { icon: FiMail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
 ];
 

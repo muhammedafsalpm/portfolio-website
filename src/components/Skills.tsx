@@ -16,7 +16,7 @@ export default function Skills() {
             key={g.group}
             delay={i * 80}
             className={`spotlight rounded-2xl border border-line bg-elevated p-6 transition hover:border-accent/50 ${
-              i === 0 ? "lg:col-span-2" : ""
+              i === 0 || i === skills.length - 1 ? "lg:col-span-2" : ""
             }`}
           >
             <h3 className="flex items-center gap-2 font-semibold">

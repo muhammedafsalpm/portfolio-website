@@ -16,7 +16,7 @@ const jsonLd = {
   name: profile.name,
   jobTitle: profile.currentTitle,
   email: `mailto:${profile.email}`,
-  address: { "@type": "PostalAddress", addressLocality: "Kochi", addressRegion: "Keralam", addressCountry: "IN" },
+  address: { "@type": "PostalAddress", addressLocality: "Kochi", addressRegion: "Kerala", addressCountry: "IN" },
   sameAs: socials.map((s) => s.href),
 };
 
