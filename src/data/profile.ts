@@ -364,6 +364,7 @@ export const projects: Project[] = [
     description:
       "End-to-end pipeline converting Hugging Face BF16 weights into seven GGUF variants with llama.cpp and importance-matrix (imatrix) calibration, evaluating model fidelity (perplexity, KL divergence) and publishing the artifacts to Hugging Face Hub.",
     tags: ["llama.cpp", "GGUF", "Imatrix", "Perplexity", "KL Divergence", "HF Hub"],
+    github: "https://github.com/muhammedafsalpm/qwen3.8-27b-gguf-quantization",
     huggingface: "https://huggingface.co/muhammed-afsal-p-m",
     featured: true,
   },
