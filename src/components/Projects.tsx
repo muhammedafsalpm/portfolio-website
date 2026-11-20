@@ -1,4 +1,5 @@
 import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import { SiHuggingface } from "react-icons/si";
 import { projects, socials } from "@/data/profile";
 import Reveal from "./Reveal";
 import Section, { Chip } from "./Section";
@@ -11,7 +12,7 @@ export default function Projects() {
       id="projects"
       eyebrow="04 · Projects"
       title="Selected work"
-      intro="Production platforms and applied AI projects across agentic systems, RAG, voice AI, NL-to-SQL and LLM fine-tuning."
+      intro="Production platforms and applied AI projects across multi-agent systems, NL-to-SQL, RAG, MCP, vision-language models and LLM quantization."
     >
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
@@ -39,7 +40,7 @@ export default function Projects() {
                 <Chip key={t}>{t}</Chip>
               ))}
             </div>
-            {(p.github || p.demo) && (
+            {(p.github || p.huggingface || p.demo) && (
               <div className="mt-5 flex gap-4 border-t border-line pt-4 text-sm">
                 {p.github && (
                   <a
@@ -49,6 +50,16 @@ export default function Projects() {
                     className="inline-flex items-center gap-1.5 font-medium text-muted hover:text-accent"
                   >
                     <FiGithub /> Source
+                  </a>
+                )}
+                {p.huggingface && (
+                  <a
+                    href={p.huggingface}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 font-medium text-muted hover:text-accent"
+                  >
+                    <SiHuggingface /> Hugging Face
                   </a>
                 )}
                 {p.demo && (

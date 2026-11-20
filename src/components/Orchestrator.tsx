@@ -20,7 +20,7 @@ const AGENTS: Node[] = [
   { id: "planner", x: 68, y: 280, label: "Planner", sub: "task graph", icon: FiTarget },
   { id: "retriever", x: 196, y: 280, label: "Retriever", sub: "RAG · vectors", icon: FiDatabase },
   { id: "tools", x: 324, y: 280, label: "Tool Caller", sub: "MCP · APIs · SQL", icon: FiTool },
-  { id: "evaluator", x: 452, y: 280, label: "Evaluator", sub: "guardrails · HITL", icon: FiCheckCircle },
+  { id: "evaluator", x: 452, y: 280, label: "Evaluator", sub: "LLM judge · HITL", icon: FiCheckCircle },
 ];
 const OUTPUT: Node = { id: "output", x: 260, y: 398, label: "Response", sub: "voice · text", icon: FiZap };
 

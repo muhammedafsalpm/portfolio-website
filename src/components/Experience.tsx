@@ -82,7 +82,7 @@ export default function Experience() {
               {job.ventures && job.ventures.length > 0 && (
                 <div className="mt-8 border-t border-line pt-6">
                   <p className="font-mono text-xs uppercase tracking-wider text-subtle">
-                    Startups &amp; products at {job.company.replace(/ Pvt\. Ltd$/, "")}
+                    Internal startup assignments at {job.company.replace(/ Pvt\. Ltd$/, "")}
                   </p>
                   <div className="mt-4 space-y-4">
                     {job.ventures.map((v) => (
@@ -95,7 +95,7 @@ export default function Experience() {
                               <span className="text-subtle"> · {v.note}</span>
                             </p>
                           </div>
-                          <span className="shrink-0 font-mono text-sm text-subtle">{v.period}</span>
+                          {v.period && <span className="shrink-0 font-mono text-sm text-subtle">{v.period}</span>}
                         </div>
                         <Points points={v.points} />
                         <Tags tags={v.tags} />

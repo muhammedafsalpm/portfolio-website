@@ -23,8 +23,8 @@ export default function Contact() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_1fr]">
         <Reveal className="relative overflow-hidden rounded-3xl border border-line bg-elevated p-8 sm:p-10">
           <p className="max-w-md text-lg leading-relaxed text-muted">
-            I&apos;m open to AI engineering roles and collaborations in agentic AI, multi-agent orchestration, RAG,
-            voice agents and on-premise LLM solutions. If you&apos;re building in this space, I&apos;d be glad to connect.
+            I&apos;m open to agentic AI, forward-deployed and full-stack AI engineering roles, and to collaborations in
+            multi-agent orchestration, RAG, NL-to-SQL and on-premise LLMs. If you&apos;re building in this space, I&apos;d be glad to connect.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
