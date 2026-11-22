@@ -40,7 +40,7 @@ export default function OpengraphImage() {
         <div style={{ display: "flex", fontSize: 72, fontWeight: 700, marginTop: 40 }}>{profile.name}</div>
         <div style={{ display: "flex", fontSize: 40, marginTop: 12, color: "#6eaacc" }}>{profile.role}</div>
         <div style={{ display: "flex", fontSize: 28, marginTop: 28, color: "#9bb0bf" }}>
-          Forward Deployed AI · Multi-Agent · NL-to-SQL · RAG · {profile.location}
+          Agentic AI · RAG · NL-to-SQL · Fine-tuning · {profile.location}
         </div>
       </div>
     ),

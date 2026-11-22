@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FiAward, FiBookOpen, FiBriefcase, FiGlobe, FiMail, FiMapPin } from "react-icons/fi";
+import { FiAward, FiBookOpen, FiBriefcase, FiClock, FiGlobe, FiMapPin, FiMessageCircle, FiNavigation } from "react-icons/fi";
 import { education, profile } from "@/data/profile";
 import Reveal from "./Reveal";
 import Section from "./Section";
@@ -7,11 +7,13 @@ import Section from "./Section";
 const facts = [
   { icon: FiBriefcase, label: "Role", value: `${profile.currentTitle} @ ${profile.currentCompany}` },
   { icon: FiMapPin, label: "Location", value: profile.location },
+  { icon: FiClock, label: "Notice period", value: profile.noticePeriod },
+  { icon: FiNavigation, label: "Open to", value: profile.preferredLocations },
   { icon: FiBookOpen, label: "Education", value: "B.Tech CSE · CGPA 8.46" },
   { icon: FiAward, label: "Certified", value: "Microsoft Azure DP-100 · DP-900" },
-  { icon: FiGlobe, label: "Domains", value: "Oil & Gas · BFSI · Healthcare · E-commerce / AdTech · Enterprise" },
-  { icon: FiMail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
-];
+  { icon: FiGlobe, label: "Domains", value: "Oil & Gas · BFSI · Healthcare · E-commerce" },
+  { icon: FiMessageCircle, label: "Languages", value: profile.languages },
+] as { icon: typeof FiMapPin; label: string; value: string; href?: string }[];
 
 export default function About() {
   return (

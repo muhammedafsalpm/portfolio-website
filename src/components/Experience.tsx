@@ -82,7 +82,7 @@ export default function Experience() {
               {job.ventures && job.ventures.length > 0 && (
                 <div className="mt-8 border-t border-line pt-6">
                   <p className="font-mono text-xs uppercase tracking-wider text-subtle">
-                    Internal startup assignments at {job.company.replace(/ Pvt\. Ltd$/, "")}
+                    Incubated products at {job.company.replace(/ Pvt\. Ltd$/, "")}
                   </p>
                   <div className="mt-4 space-y-4">
                     {job.ventures.map((v) => (
@@ -91,7 +91,18 @@ export default function Experience() {
                           <div>
                             <h4 className="font-semibold">{v.role}</h4>
                             <p className="mt-0.5 text-sm">
-                              <span className="font-medium text-accent">{v.company}</span>
+                              {v.url ? (
+                                <a
+                                  href={v.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-0.5 font-medium text-accent hover:underline"
+                                >
+                                  {v.company} <FiArrowUpRight size={13} />
+                                </a>
+                              ) : (
+                                <span className="font-medium text-accent">{v.company}</span>
+                              )}
                               <span className="text-subtle"> · {v.note}</span>
                             </p>
                           </div>

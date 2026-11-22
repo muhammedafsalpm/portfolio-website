@@ -30,7 +30,6 @@ import {
   SiTailwindcss,
   SiTensorflow,
   SiTypescript,
-  SiVercel,
 } from "react-icons/si";
 import { TbBrandOpenai } from "react-icons/tb";
 import { VscAzure } from "react-icons/vsc";
@@ -54,7 +53,6 @@ const ICONS: Record<string, IconType> = {
   Angular: SiAngular,
   TypeScript: SiTypescript,
   "Tailwind CSS": SiTailwindcss,
-  Vercel: SiVercel,
   pgvector: FiDatabase,
   Elasticsearch: SiElasticsearch,
   Qwen: SiQwen,

@@ -12,7 +12,7 @@ export default function Projects() {
       id="projects"
       eyebrow="04 · Projects"
       title="Selected work"
-      intro="Production platforms and applied AI projects across multi-agent systems, NL-to-SQL, RAG, MCP, vision-language models and LLM quantization."
+      intro="Open-source models and repositories first, then agentic AI platforms I have built and shipped across oil & gas, BFSI and e-commerce."
     >
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
@@ -28,7 +28,7 @@ export default function Projects() {
               <span className="font-mono text-xs text-subtle">{String(i + 1).padStart(2, "0")}</span>
               {p.featured && (
                 <span className="rounded-full bg-accent-soft px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-accent">
-                  Featured
+                  {p.badge ?? "Featured"}
                 </span>
               )}
             </div>
